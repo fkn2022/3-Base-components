@@ -6,9 +6,11 @@
     <string name="create_periodic_button">Create periodic notification</string>
     <string name="turn_network_broadcast">Turn network broadcast</string>
     <string name="fragment_with_gyroscope">Create fragment with gyroscope</string>
-    <string name="start_activity_text">Implement start Activity</string>
-    <string name="get_contact_text">Implement get contact content provider</string>
-    <string name="create_periodic_text">Implement periodic notification. Turn on and turn off on button pressing</string>
-    <string name="turn_network_text">Implement network broadcast receiver. Turn on and turn off on button pressing</string>
-    <string name="fragment_with_gyroscope_text">Implement two fragments creation on button with communication between them. Start working with gyroscope on the first one and send information to another one.</string>
+
+    <string name="start_activity_text">Implement start Activity\nhttps://developer.android.com/training/basics/intents/result</string>
+    <string name="get_contact_text">Implement get contact content provider\nhttps://developer.android.com/guide/topics/providers/content-provider-basics</string>
+    <string name="create_periodic_text">Implement periodic notification. Turn on and turn off on button pressing\nhttps://developer.android.com/topic/libraries/architecture/workmanager</string>
+    <string name="turn_network_text">Implement network broadcast receiver. Turn on and turn off on button pressing\nhttps://developer.android.com/guide/components/broadcasts</string>
+    <string name="fragment_with_gyroscope_text">Implement two fragments creation on button with communication between them. Start working with gyroscope on the first one and send information to another one.\nhttps://developer.android.com/guide/topics/sensors</string>
+    <string name="about_permissions">An article about Permissions\nhttps://developer.android.com/guide/topics/permissions/overview</string>
 </resources>

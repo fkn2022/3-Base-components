@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:autoLink="web"
         android:text="@string/start_activity_text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/get_contact_text"
+        android:autoLink="web"
         app:layout_constraintTop_toBottomOf="@id/start_activity_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -53,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/create_periodic_text"
+        android:autoLink="web"
         app:layout_constraintTop_toBottomOf="@id/get_contact_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -73,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/turn_network_text"
+        android:autoLink="web"
         app:layout_constraintTop_toBottomOf="@id/create_periodic_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -92,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:autoLink="web"
         android:text="@string/fragment_with_gyroscope_text"
         app:layout_constraintTop_toBottomOf="@id/turn_network_broadcast_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,5 +111,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+    <TextView
+        android:id="@+id/about_permissions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoLink="web"
+        android:text="@string/about_permissions"
+        app:layout_constraintTop_toBottomOf="@id/fragment_with_gyroscope_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
