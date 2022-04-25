@@ -13,4 +13,10 @@
     <string name="turn_network_text">Implement network broadcast receiver. Turn on and turn off on button pressing\nhttps://developer.android.com/guide/components/broadcasts</string>
     <string name="fragment_with_gyroscope_text">Implement two fragments creation on button with communication between them. Start working with gyroscope on the first one and send information to another one.\nhttps://developer.android.com/guide/topics/sensors</string>
     <string name="about_permissions">An article about Permissions\nhttps://developer.android.com/guide/topics/permissions/overview</string>
+
+    <string name="permission_required">Contacts access is required to display the contacts.</string>
+    <string name="ok">OK</string>
+    <string name="permission_granted">Permission is granted.</string>
+    <string name="notification_tag">notificationWorker</string>
+
 </resources>
