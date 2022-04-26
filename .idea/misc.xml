@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/3-Base-components/app/src/main/res/layout/activity_contacts.xml" value="0.2222222222222222" />
         <entry key="..\:/AndroidStudioProjects/3-Base-components/app/src/main/res/layout/contact_card.xml" value="0.1" />
+        <entry key="..\:/Users/60113446/AndroidStudioProjects/3-Base-components/app/src/main/res/layout/activity_gyroscope.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/60113446/AndroidStudioProjects/3-Base-components/app/src/main/res/layout/fragment_receiver.xml" value="0.1796875" />
+        <entry key="..\:/Users/60113446/AndroidStudioProjects/3-Base-components/app/src/main/res/layout/fragment_sender.xml" value="0.1796875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.209" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />

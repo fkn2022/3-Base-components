@@ -5,9 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,7 +14,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.basecomponents.databinding.ActivityMainBinding
@@ -67,8 +64,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.turnNetworkBroadcastButton.setOnClickListener {
-            onClickRequestConnectivityPermission(it)
+            networkBroadcast()
         }
+
+        binding.fragmentWithGyroscopeButton.setOnClickListener {
+            gyroscopeButton()
+        }
+    }
+
+    private fun gyroscopeButton() {
+        startActivity(
+            Intent(this, GyroscopeActivity::class.java)
+        )
     }
 
     private fun networkBroadcast() {
@@ -80,7 +87,8 @@ class MainActivity : AppCompatActivity() {
 
             registerReceiver(
                 broadcastReceiver,
-                IntentFilter(ConnectivityManager.EXTRA_NO_CONNECTIVITY)
+//                IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+                IntentFilter("android.net.conn.CONNECTIVITY_CHANGE")
             )
         } else {
             editor.putBoolean(Utils.CONNECTION_CHECKER_IS_ON, false)
@@ -105,51 +113,6 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Permission: ", "Denied")
             }
         }
-
-    private fun onClickRequestConnectivityPermission(view: View) {
-        when {
-            ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_NETWORK_STATE
-            ) == PackageManager.PERMISSION_GRANTED -> {
-                layout.showSnackbar(
-                    view,
-                    getString(R.string.permission_granted),
-                    Snackbar.LENGTH_SHORT,
-                    null
-                ) {}
-                networkBroadcast()
-            }
-
-            ActivityCompat.shouldShowRequestPermissionRationale(
-                this,
-                Manifest.permission.ACCESS_NETWORK_STATE
-            ) -> {
-                layout.showSnackbar(
-                    view,
-                    getString(R.string.permission_required),
-                    Snackbar.LENGTH_SHORT,
-                    getString(R.string.ok)
-                ) {
-                    requestPermissionLauncher.launch(
-                        Manifest.permission.READ_CONTACTS
-                    )
-                }
-                startActivity(
-                    Intent(
-                        this,
-                        ContactsActivity::class.java
-                    )
-                )
-            }
-
-            else -> {
-                requestPermissionLauncher.launch(
-                    Manifest.permission.ACCESS_NETWORK_STATE
-                )
-            }
-        }
-    }
 
     private fun onClickRequestPermission(view: View) {
         when {
