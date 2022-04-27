@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseComponents">
         <activity
-            android:name=".GyroscopeActivity"
+            android:name=".intercomponent_communication.GyroscopeActivity"
             android:exported="false" />
 
         <receiver

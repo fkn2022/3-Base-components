@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.basecomponents.databinding.ActivityMainBinding
+import com.example.basecomponents.intercomponent_communication.GyroscopeActivity
 import com.example.basecomponents.utils.Utils
 import com.google.android.material.snackbar.Snackbar
 import java.util.concurrent.TimeUnit

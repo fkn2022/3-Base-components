@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.basecomponents.R
+import com.example.basecomponents.databinding.FragmentReceiverBinding
 
 class ReceiverFragment : Fragment() {
 
@@ -14,19 +16,26 @@ class ReceiverFragment : Fragment() {
         fun newInstance() = ReceiverFragment()
     }
 
-    private lateinit var viewModel: ReceiverViewModel
+    private val viewModel: GyroscopeViewModel by activityViewModels()
+
+    private var _binding: FragmentReceiverBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_receiver, container, false)
+    ): View {
+        _binding = FragmentReceiverBinding.inflate(inflater, container, false)
+//        viewModel = ViewModelProvider(this)[ReceiverViewModel::class.java]
+//        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.interComponentViewModel = viewModel
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ReceiverViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.text.observe(viewLifecycleOwner) {
+            binding.receivedText.text = it
+        }
     }
-
 }

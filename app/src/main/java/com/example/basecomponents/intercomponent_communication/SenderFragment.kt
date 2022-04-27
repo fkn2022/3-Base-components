@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.basecomponents.R
 import com.example.basecomponents.databinding.FragmentSenderBinding
 
@@ -20,10 +22,9 @@ class SenderFragment : Fragment(), SensorEventListener {
 
     companion object {
         fun newInstance() = SenderFragment()
-        var i = 0
     }
 
-    private lateinit var viewModel: SenderViewModel
+    private val viewModel: GyroscopeViewModel by activityViewModels()
     private lateinit var mSensorManager: SensorManager
     private lateinit var mGyroscope: Sensor
 
@@ -35,22 +36,19 @@ class SenderFragment : Fragment(), SensorEventListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSenderBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[SenderViewModel::class.java]
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.senderViewModel = viewModel
+//        viewModel = ViewModelProvider(this)[SenderViewModel::class.java]
+//        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.interComponentViewModel = viewModel
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[SenderViewModel::class.java]
-        // TODO: Use the ViewModel
     }
 
     override fun onStart() {
         super.onStart()
         mSensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        mGyroscope = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE)
+        mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+        viewModel.text.observe(viewLifecycleOwner){
+            binding.sentText.text = it
+        }
     }
 
     override fun onResume() {
@@ -64,15 +62,14 @@ class SenderFragment : Fragment(), SensorEventListener {
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
-        i++
-        val text = i.toString() + " SensorChanged: "+ (p0?.sensor?.name ?: "unknown sensor")
-        binding.sentText.text = text
+        val x: Float? = p0?.values?.get(0)
+        val y: Float? = p0?.values?.get(1)
+        val z: Float? = p0?.values?.get(2)
+
+        viewModel.changeCoord(x, y, z)
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-//        i++
-//        val text = i.toString() + " SensorChanged: "+ (p0?.name ?: "unknown sensor")
-//        binding.sentText.text = text
     }
 
 }
