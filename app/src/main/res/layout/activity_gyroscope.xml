@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".intercomponent_communication.GyroscopeActivity"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentSender"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:name="com.example.basecomponents.intercomponent_communication.SenderFragment"
+        tools:layout="@layout/fragment_sender" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentReceiver"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentSender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:name="com.example.basecomponents.intercomponent_communication.ReceiverFragment"
+        tools:layout="@layout/fragment_receiver" />
+
+</LinearLayout>
